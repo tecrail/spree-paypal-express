@@ -3,7 +3,7 @@ module ActiveMerchant #:nodoc:
     # This module is included in both PaypalGateway and PaypalExpressGateway
     module PaypalCommonAPI
       def self.included(base)
-        base.default_currency = 'USD'
+        base.default_currency = 'EUR'
         base.cattr_accessor :pem_file
         base.cattr_accessor :signature
       end
@@ -319,7 +319,7 @@ module ActiveMerchant #:nodoc:
               xml.tag! 'n2:ShippingOptionIsDefault', (i == 0)
               xml.tag! 'n2:ShippingOptionName', shipping_option[:name]
               xml.tag! 'n2:ShippingOptionLabel', shipping_option[:label]
-              xml.tag! 'n2:ShippingOptionAmount', amount(shipping_option[:amount] ), 'currencyID' => 'USD'
+              xml.tag! 'n2:ShippingOptionAmount', amount(shipping_option[:amount] ), 'currencyID' => 'EUR'
             end
           end
         end
